@@ -99,7 +99,7 @@ class Usb(Escpos):
         paper = self.__extract_status()
             
         status['printer']['status_code']     = printer
-        status['printer']['status_error']    = not ((printer & 147) == 18)
+        status['printer']['status_error']    = not ((printer & 147) in (18,0))
         status['printer']['online']          = not bool(printer & 8)
         status['printer']['recovery']        = bool(printer & 32)
         status['printer']['paper_feed_on']   = bool(printer & 64)
